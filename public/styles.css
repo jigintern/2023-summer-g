@@ -15,7 +15,7 @@ body {
 * 投稿一覧での投稿の表示
 */
 
-div#dreams{
+div.dreams{
 	color: #fff;
 	background-color: #0D99FF;
 	width: 358px;
