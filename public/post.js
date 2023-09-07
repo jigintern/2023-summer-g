@@ -8,7 +8,7 @@ document.getElementById("post-button").onclick = async () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ contents: contents, titles: titles }),
     });
-    document.getElementById("test").innerText = await response.text();
+
   } catch (error) {
     console.error("Error posting dream:", error);
   }
