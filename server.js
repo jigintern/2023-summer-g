@@ -4,14 +4,7 @@ import { serveDir } from "https://deno.land/std@0.194.0/http/file_server.ts?s=se
 import { Client } from "https://deno.land/x/mysql@v2.11.0/mod.ts";
 import "https://deno.land/std@0.193.0/dotenv/load.ts";
 import { DIDAuth } from "https://jigintern.github.io/did-login/auth/DIDAuth.js";
-import { addDID, checkIfIdExists, getUser } from "./db-controller.js";
-
-const mySqlClient = await new Client().connect({
-  hostname: Deno.env.get("MYSQL_HOSTNAME"),
-  username: Deno.env.get("MYSQL_USER"),
-  password: Deno.env.get("MYSQL_PASSWORD"),
-  db: Deno.env.get("DATABASE"),
-});
+import { addDID, checkIfIdExists, getUser,client as mySqlClient } from "./db-controller.js";
 
 serve(async (req) => {
   const pathname = new URL(req.url).pathname;
@@ -191,7 +184,7 @@ serve(async (req) => {
         return new Response("不正な電子署名です", { status: 400 });
       }
     } catch (e) {
-      return new Response(e.message, { status: 500 });
+      return new Response("1", { status: 500 });
     }
     // 既にDBにDIDが登録されているかチェック
     try {
@@ -200,7 +193,7 @@ serve(async (req) => {
         return Response("登録済みです", { status: 400 });
       }
     } catch (e) {
-      return new Response(e.message, { status: 500 });
+      return new Response("2", { status: 500 });
     }
 
     // DBにDIDとuserNameを保存
@@ -208,7 +201,7 @@ serve(async (req) => {
       await addDID(did, userName);
       return new Response("ok");
     } catch (e) {
-      return new Response(e.message, { status: 500 });
+      return new Response("3", { status: 500 });
     }
   }
 

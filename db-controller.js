@@ -11,7 +11,7 @@ const connectionParam = {
 };
 
 // クライアントの作成
-const client = await new Client().connect(connectionParam);
+export const client = await new Client().connect(connectionParam);
 
 export async function checkIfIdExists(did) {
   // DBにDIDがあるか
