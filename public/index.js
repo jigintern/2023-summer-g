@@ -51,13 +51,26 @@ window.onload = async () => {
     }
 
     try {
-      const response = await fetch("/dream-content");
+      const response = await fetch("");
       document.getElementById("dream-content").innerText =
         await response.text();
     } catch (error) {
       console.error("Error fetching from /dream-title:", error);
     }
   }
+
+    try {
+      const response = await fetch("/profile-name");
+      const result = await response.text();
+      const data = JSON.parse(result);
+
+      const name = document.getElementById("user-circle");
+
+
+    } catch (error) {
+
+  }
+
 };
 
 // document.getElementById("fetch-dreams-button").onclick = async () => {

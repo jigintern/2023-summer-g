@@ -153,6 +153,15 @@ serve(async (req) => {
       return new Response("Comment added successfully.");
     }
   }
+    /**
+     * 
+     * 
+     */
+
+    if (req.method === "GET" && pathname.startsWith("pathname === /profile-name")) {
+      
+    }
+
 
   // Endpoint to retrieve comments for a specific dream
   if (req.method === "GET" && pathname.startsWith("/dreams/")) {
